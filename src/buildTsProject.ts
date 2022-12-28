@@ -140,6 +140,8 @@ async function createProject(projectName: string, dir: string) {
 
     fs.writeFileSync(path.join(srcDir, 'index.ts'), indexTs);
 
+    //switch working vs code directory to project directory
+    vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(projectDir));
 
     //message to user
     vscode.window.showInformationMessage(`Successfully created project "${projectName}"`);
