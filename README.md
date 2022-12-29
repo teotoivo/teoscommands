@@ -23,4 +23,4 @@ Credits
 This extension was developed by Teo Maximilien.
 
 LICENCE
-This extension is licensed under the MIT License.
+This extension is licensed under the MIT License. See the LICENSE file for details.
