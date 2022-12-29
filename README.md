@@ -23,5 +23,5 @@ To use this extension, open the Command Palette (Ctrl+Shift+P) and type "Test Te
 Credits
 This extension was developed by Teo Maximilien.
 
-License
+LICENCE
 This extension is licensed under the MIT License.
