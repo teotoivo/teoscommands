@@ -1,34 +1,40 @@
-Teos Commands Extension for Visual Studio Code
+# Teos Commands Extension for Visual Studio Code
+
 This extension provides useful commands for working with Teos projects in Visual Studio Code.
 
-Features
-Build Ts: Creates a new TypeScript project in the current directory
+## Features
 
-Requirements
+Build Ts: Creates a new TypeScript project in the current directory
+## Requirements
+
 Visual Studio Code 1.50 or higher
-Extension Settings
+## Extension Settings
+
 This extension contributes the following settings:
 
-teoscommands.enable: enable/disable this extension
-Known Issues
+* `teoscommands.enable`: enable/disable this extension
+
+* `teoscommands.folders`: spesifies what folders should be created on build
+## Known Issues
+
 None
 
-Release Notes
+## Release Notes
 
-1.0.2
-added settings to spesify what directories/fiels should be created on build
+* 1.0.3: styled the readme adn added an icon
+* 1.0.2: added settings to specify what directories/files should be created on build
+* 1.0.1: fixed some initial typos and added a LICENSE file
+* 1.0.0: Initial release
+## How to use
 
-1.0.1
-fixed some initial typos and added a LICENSE file
-
-1.0.0
-Initial release
-
-How to use
 To use this extension, open the Command Palette (Ctrl+Shift+P) and type "Test Teo" or "Build Ts" to run the corresponding command. You can also click the "Test Teo" or "Build Ts" button in the status bar to run the commands.
 
-Credits
+## Credits
+
 This extension was developed by Teo Maximilien.
 
-LICENCE
+## LICENSE
+
 This extension is licensed under the MIT License. See the LICENSE file for details.
+
+I hope this helps! Let me know if you have any other questions.

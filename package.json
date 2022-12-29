@@ -2,6 +2,7 @@
 	"name": "teoscommands",
 	"displayName": "teoscommands",
 	"publisher": "teotoivo",
+	"icon": "icon.png",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
