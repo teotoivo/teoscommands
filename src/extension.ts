@@ -8,8 +8,6 @@ import { buildTsProject } from './buildTsProject';
 // Your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext) {
 	console.log("activate");
-	
-
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "teoscommands" is now active!');
@@ -21,6 +19,11 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	let disposable = await buildTsProject();
 
+	//create new status bar item
+	let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 1);
+	statusBarItem.text = "Build TS Project";
+	statusBarItem.command = 'teoscommands.buildTsProject';
+	statusBarItem.show();
 
 
 	let disposable2 = vscode.commands.registerCommand('teoscommands.testTeo', () => {
@@ -43,9 +46,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			const element = commands[key];
 			context.subscriptions.push(element);
 		}
-	}
-
-	
+	}	
 }
 
 // This method is called when your extension is deactivated
