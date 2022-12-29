@@ -26,19 +26,9 @@ export async function activate(context: vscode.ExtensionContext) {
 	statusBarItem.show();
 
 
-	let disposable2 = vscode.commands.registerCommand('teoscommands.testTeo', () => {
-		console.log("testTeo");
-		
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
-	});
-
-
 
 	const commands: { [key: string]: vscode.Disposable} = {
-		disposable,
-		disposable2
+		disposable
 	};
 	
 	for (const key in commands) {

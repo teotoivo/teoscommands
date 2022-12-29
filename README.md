@@ -2,7 +2,6 @@ Teos Commands Extension for Visual Studio Code
 This extension provides useful commands for working with Teos projects in Visual Studio Code.
 
 Features
-Test Teo: Displays a message box with the text "Hello World!".
 Build Ts: Creates a new TypeScript project in the current directory
 Requirements
 Visual Studio Code 1.50 or higher
