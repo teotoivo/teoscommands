@@ -13,6 +13,9 @@ Known Issues
 None
 
 Release Notes
+1.0.1
+fixed some initial typos and added a LICENSE file
+
 1.0.0
 Initial release
 

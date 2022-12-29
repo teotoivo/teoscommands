@@ -6,8 +6,8 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/teotoivo/teoscommands"},
-	"description": "addsSomeNewCommands",
-	"version": "1.0.0",
+	"description": "adds some new commands",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.74.0"
 	},
