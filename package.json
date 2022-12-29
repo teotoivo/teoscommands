@@ -1,6 +1,7 @@
 {
 	"name": "teoscommands",
 	"displayName": "teosCommands",
+	"publisher": "teotoivo",
 	"description": "addsSomeNewCommands",
 	"version": "0.0.1",
 	"engines": {
