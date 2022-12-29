@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { ExtensionContext } from 'vscode';
 
-export async function buildTsProject() {
+export async function buildTsProject(context: vscode.ExtensionContext) {
     return vscode.commands.registerCommand('teoscommands.buildTsProject', async () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
@@ -69,7 +70,6 @@ function isValidTypeScriptProjectName(name: string): { valid: boolean, message?:
     return { valid: true };
 }
 
-
 async function createProject(projectName: string, dir: string) {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
@@ -92,22 +92,62 @@ async function createProject(projectName: string, dir: string) {
         fs.mkdirSync(devlopmentDir);
     }
 
-    if (!fs.existsSync(path.join(projectDir, 'src/public'))) {
-        fs.mkdirSync(path.join(projectDir, 'src/public'));
+    
+
+    function getDirectoriesToCreate(paths: string[]): string[] {
+        const directoriesToCreate: string[] = [];
+
+        console.log({paths});
+        
+      
+        for (const path of paths) {
+          const directories = path.split('/');
+          let currentDirectory = '';
+      
+          for (const directory of directories) {
+            currentDirectory += directory + '/';
+            if (!directoriesToCreate.includes(currentDirectory)) {
+              directoriesToCreate.push(currentDirectory);
+            }
+          }
+        }
+      
+        return directoriesToCreate;
     }
 
-    if (!fs.existsSync(path.join(projectDir, 'src/css'))) {
-        fs.mkdirSync(path.join(projectDir, 'src/css'));
-    }
 
-    if (!fs.existsSync(path.join(projectDir, 'src/js'))) {
-        fs.mkdirSync(path.join(projectDir, 'src/js'));
-    }
+    //get teoscommands.folders settings value
+    
+    const config = vscode.workspace.getConfiguration('teoscommands');
+    const afolders = config.get('folders') as string[];
+    
+    
 
-    if (!fs.existsSync(path.join(projectDir, 'src/html'))) {
-        fs.mkdirSync(path.join(projectDir, 'src/html'));
+    const directoriesToCreate = getDirectoriesToCreate(afolders);
+
+    for (const directory of directoriesToCreate) {
+        if (!fs.existsSync(path.join(projectDir, directory))) {
+            if (directory.includes('.')) {
+                try {
+                    fs.writeFileSync(path.join(projectDir, directory), '');
+                } catch (error: any) {
+                    if (error.code !== 'EEXIST') {
+                        throw error;
+                    }
+                }
+            } else {
+                try {
+                    fs.mkdirSync(path.join(projectDir, directory));
+                } catch (error: any) {
+                    if (error.code !== 'EEXIST') {
+                        throw error;
+                    }
+                }
+            }
+        }
     }
     
+
 
     const tsconfig = {
         compilerOptions: {
@@ -136,9 +176,6 @@ async function createProject(projectName: string, dir: string) {
 
     fs.writeFileSync(path.join(projectDir, 'package.json'), JSON.stringify(packageJson, null, 2));
 
-    const indexTs = `console.log('hello world');`;
-
-    fs.writeFileSync(path.join(srcDir, 'index.ts'), indexTs);
 
     //switch working vs code directory to project directory
     vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(projectDir));

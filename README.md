@@ -3,6 +3,7 @@ This extension provides useful commands for working with Teos projects in Visual
 
 Features
 Build Ts: Creates a new TypeScript project in the current directory
+
 Requirements
 Visual Studio Code 1.50 or higher
 Extension Settings
@@ -13,6 +14,10 @@ Known Issues
 None
 
 Release Notes
+
+1.0.2
+added settings to spesify what directories/fiels should be created on build
+
 1.0.1
 fixed some initial typos and added a LICENSE file
 
