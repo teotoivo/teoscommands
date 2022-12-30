@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 
 import { buildTsProject } from './buildTsProject';
+import { buildReactProject } from './buildReactProject';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -19,7 +20,9 @@ export async function activate(context: vscode.ExtensionContext) {
 	
 	
 
-	let disposable = await buildTsProject(context);
+	const teoscommandsBuildTsProject = await buildTsProject(context);
+
+	const teoscommandsBuildReactProject = await buildReactProject(context);
 
 	//create new status bar item
 	let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 1);
@@ -27,10 +30,17 @@ export async function activate(context: vscode.ExtensionContext) {
 	statusBarItem.command = 'teoscommands.buildTsProject';
 	statusBarItem.show();
 
+	let statusBarItem2 = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 2);
+	statusBarItem2.text = "Build React Project";
+	statusBarItem2.command = 'teoscommands.buildReactProject';
+	statusBarItem2.show();
+
 
 
 	const commands: { [key: string]: vscode.Disposable} = {
-		disposable
+		teoscommandsBuildTsProject,
+		teoscommandsBuildReactProject
+
 	};
 	
 	for (const key in commands) {

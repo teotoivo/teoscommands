@@ -8,7 +8,7 @@
 		"type": "git",
 		"url": "https://github.com/teotoivo/teoscommands"},
 	"description": "adds some new commands",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"engines": {
 		"vscode": "^1.74.0"
 	},
@@ -18,7 +18,7 @@
 	"activationEvents": [
 		"onStartupFinished",
 		"onCommand:teoscommands.buildTsProject",
-		"onCommand:teoscommands.testTeo"
+		"onCommand:teoscommands.buildReactProject"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -28,8 +28,8 @@
 				"title": "build new ts project"
 			},
 			{
-				"command": "teoscommands.testTeo",
-				"title": "Test Teo"
+				"command": "teoscommands.buildReactProject",
+				"title": "build new react project"
 			}
 		],
 		"configuration": {

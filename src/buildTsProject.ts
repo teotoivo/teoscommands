@@ -151,11 +151,12 @@ async function createProject(projectName: string, dir: string) {
 
     const tsconfig = {
         compilerOptions: {
-          target: "esnext",
-          module: "commonjs",
-          watch: true,
-          rootDir: "./src",
-          outDir: "./dev"
+            target: "esnext",
+            module: "commonjs",
+            watch: true,
+            rootDir: "./src",
+            outDir: "./dev",
+            strict: true,
         },
         include: ["src/**/*"]
     };
