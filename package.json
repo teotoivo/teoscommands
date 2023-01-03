@@ -18,7 +18,8 @@
 	"activationEvents": [
 		"onStartupFinished",
 		"onCommand:teoscommands.buildTsProject",
-		"onCommand:teoscommands.buildReactProject"
+		"onCommand:teoscommands.buildReactProject",
+		"onCommand:teoscommands.trigger"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -30,6 +31,10 @@
 			{
 				"command": "teoscommands.buildReactProject",
 				"title": "build new react project"
+			},
+			{
+				"command": "teoscommands.trigger",
+				"title": "trigger"
 			}
 		],
 		"configuration": {
@@ -45,9 +50,33 @@
 						"dev/public/html"
 					],
 					"description": "spesifies what folders/files should be created on build"
-			  	}
+			  	},
+				"teoscommands.reactFolders": {
+					"type": "array",
+					"default": [
+						"src",
+						"public"
+					],
+					"description": "spesifies what folders/files should be created on build"
+			  	},
+				"teoscommands.createReactButton": {
+					"type": "boolean",
+					"default": true,
+					"description": "spesifies if a button should be created for building react projects"
+				},
+				"teoscommands.createTsButton": {
+					"type": "boolean",
+					"default": true,
+					"description": "spesifies if a button should be created for building ts projects"
+				}
 		  	}
-		}
+		},
+		"buttons": [{
+            "tooltip": "My Button",
+            "command": "myExtension.myButton",
+            "icon": "gear",
+            "when": "editorLangId == 'javascript' || editorLangId == 'typescript'"
+        }]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
