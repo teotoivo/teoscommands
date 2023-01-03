@@ -101,6 +101,28 @@ export async function buildReactProject(context: vscode.ExtensionContext) {
         { stdio: "inherit" }
       );
 
+      // innstall react-router-dom
+      execSync(`cd "${projectdir}"&npm install --save react-router-dom`, {
+        stdio: "inherit",
+      });
+
+      //create index.html file
+      fs.writeFileSync(
+        "public/index.html",
+        `<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>test</title>
+  </head>
+  <body>
+  <div id='root'></div>
+  </body>
+</html>
+        `,
+        "utf-8"
+      );
+
       // Create a basic TypeScript configuration file
       fs.writeFileSync(
         "tsconfig.json",
@@ -202,17 +224,29 @@ module.exports = {
       // Create a basic TypeScript entry point file
       fs.writeFileSync(
         "src/index.tsx",
-        `
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
-import App from './App';
-	
-const root = document.getElementById('root');
+        `import React from "react";
+import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+const container = document.getElementById("root");
+const root = createRoot(container!);
 
-ReactDOM.render(
-	<App />,
-	root);
-
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/">
+        <Route index element={<App />} />
+        <Route path="*" element={<h1>bye</h1>} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 		`,
         "utf-8"
       );
