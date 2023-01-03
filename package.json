@@ -6,9 +6,10 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/teotoivo/teoscommands"},
+		"url": "https://github.com/teotoivo/teoscommands"
+	},
 	"description": "adds some new commands",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"engines": {
 		"vscode": "^1.74.0"
 	},
@@ -40,7 +41,7 @@
 		"configuration": {
 			"title": "teoscommands",
 			"properties": {
-			  	"teoscommands.folders": {
+				"teoscommands.folders": {
 					"type": "array",
 					"default": [
 						"src/public/js/script.ts",
@@ -50,7 +51,7 @@
 						"dev/public/html"
 					],
 					"description": "spesifies what folders/files should be created on build"
-			  	},
+				},
 				"teoscommands.reactFolders": {
 					"type": "array",
 					"default": [
@@ -58,7 +59,7 @@
 						"public"
 					],
 					"description": "spesifies what folders/files should be created on build"
-			  	},
+				},
 				"teoscommands.createReactButton": {
 					"type": "boolean",
 					"default": true,
@@ -69,14 +70,16 @@
 					"default": true,
 					"description": "spesifies if a button should be created for building ts projects"
 				}
-		  	}
+			}
 		},
-		"buttons": [{
-            "tooltip": "My Button",
-            "command": "myExtension.myButton",
-            "icon": "gear",
-            "when": "editorLangId == 'javascript' || editorLangId == 'typescript'"
-        }]
+		"buttons": [
+			{
+				"tooltip": "My Button",
+				"command": "myExtension.myButton",
+				"icon": "gear",
+				"when": "editorLangId == 'javascript' || editorLangId == 'typescript'"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
