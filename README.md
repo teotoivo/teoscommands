@@ -24,6 +24,7 @@ None
 
 ## Release Notes
 
+- 1.0.9: added image support
 - 1.0.8: added tailwind
 - 1.0.7: bug fixes
 - 1.0.6: bug fixes
