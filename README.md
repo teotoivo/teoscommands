@@ -24,14 +24,15 @@ None
 
 ## Release Notes
 
-- 1.0.6: bug fixes
+- 1.0.7 bug fixes
 
-* 1.0.5: added unfinished features and fixed somne bugs
-* 1.0.4: added a new command to build a react typescript project
-* 1.0.3: styled the readme adn added an icon
-* 1.0.2: added settings to specify what directories/files should be created on build
-* 1.0.1: fixed some initial typos and added a LICENSE file
-* 1.0.0: Initial release (initial features: create a new typescript project)
+- 1.0.6: bug fixes
+- 1.0.5: added unfinished features and fixed somne bugs
+- 1.0.4: added a new command to build a react typescript project
+- 1.0.3: styled the readme adn added an icon
+- 1.0.2: added settings to specify what directories/files should be created on build
+- 1.0.1: fixed some initial typos and added a LICENSE file
+- 1.0.0: Initial release (initial features: create a new typescript project)
 
 ## How to use
 

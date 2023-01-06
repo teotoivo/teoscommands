@@ -106,23 +106,6 @@ export async function buildReactProject(context: vscode.ExtensionContext) {
         stdio: "inherit",
       });
 
-      //create index.html file
-      fs.writeFileSync(
-        "public/index.html",
-        `<!DOCTYPE html>
-<html>
-  <head>
-  <meta charset='utf-8'>
-  <title>test</title>
-  </head>
-  <body>
-  <div id='root'></div>
-  </body>
-</html>
-        `,
-        "utf-8"
-      );
-
       // Create a basic TypeScript configuration file
       fs.writeFileSync(
         "tsconfig.json",
@@ -220,6 +203,23 @@ module.exports = {
       // Create the basic file structure for the project
       fs.mkdirSync("src");
       fs.mkdirSync("public");
+
+      //create index.html file
+      fs.writeFileSync(
+        "public/index.html",
+        `<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>test</title>
+  </head>
+  <body>
+  <div id='root'></div>
+  </body>
+</html>
+        `,
+        "utf-8"
+      );
 
       // Create a basic TypeScript entry point file
       fs.writeFileSync(
