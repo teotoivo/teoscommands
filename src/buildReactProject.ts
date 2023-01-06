@@ -186,6 +186,10 @@ module.exports = {
 		use: "ts-loader",
 		exclude: /node_modules/,
 	  },
+    {
+      test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      type: "asset/resource",
+    },
     ${(() => {
       if (tailwind) {
         return `{
@@ -215,6 +219,18 @@ module.exports = {
       // Create the basic file structure for the project
       fs.mkdirSync("src");
       fs.mkdirSync("public");
+      fs.mkdirSync("src/@types");
+
+      fs.writeFileSync(
+        "/src/@types/images.d.ts",
+        `//declare all image types
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.jpeg";
+declare module "*.gif";
+declare module "*.svg";
+      `
+      );
 
       if (tailwind) {
         // Install Tailwind CSS and PostCSS as dev dependencies
