@@ -13,6 +13,9 @@ export async function buildReactProject(context: vscode.ExtensionContext) {
         });
       }
 
+      //*TODO make a tailwind setting
+      const tailwind = true;
+
       let dir: string | undefined =
         (() => {
           if (vscode.workspace.workspaceFolders) {
@@ -183,6 +186,15 @@ module.exports = {
 		use: "ts-loader",
 		exclude: /node_modules/,
 	  },
+    ${(() => {
+      if (tailwind) {
+        return `{
+  test: /\.css$/i,
+  include: path.resolve(__dirname, "src"),
+  use: ["style-loader", "css-loader", "postcss-loader"],
+},`;
+      }
+    })()}
 	],
   },
   resolve: {
@@ -204,19 +216,57 @@ module.exports = {
       fs.mkdirSync("src");
       fs.mkdirSync("public");
 
+      if (tailwind) {
+        // Install Tailwind CSS and PostCSS as dev dependencies
+        execSync(
+          `cd "${projectdir}"&npm i --save-dev tailwindcss style-loader css-loader postcss postcss-loader postcss-preset-env`,
+          { stdio: "inherit" }
+        );
+
+        //create a taiwind.config.js file
+        fs.writeFileSync(
+          "tailwind.config.js",
+          `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+          `
+        );
+
+        fs.writeFileSync(
+          "src/index.css",
+          `@tailwind base;
+          @tailwind components;
+          @tailwind utilities;
+          `,
+          "utf-8"
+        );
+      }
+
       //create index.html file
       fs.writeFileSync(
         "public/index.html",
         `<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
-  <meta charset='utf-8'>
-  <title>test</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    />
   </head>
   <body>
-  <div id='root'></div>
+    <div id="root"></div>
   </body>
 </html>
+        
         `,
         "utf-8"
       );
@@ -236,6 +286,12 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 const container = document.getElementById("root");
 const root = createRoot(container!);
+
+${(() => {
+  if (tailwind) {
+    return `import "./index.css";`;
+  }
+})()}
 
 root.render(
   <BrowserRouter>
