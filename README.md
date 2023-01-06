@@ -24,8 +24,8 @@ None
 
 ## Release Notes
 
-- 1.0.7 bug fixes
-
+- 1.0.8: added tailwind
+- 1.0.7: bug fixes
 - 1.0.6: bug fixes
 - 1.0.5: added unfinished features and fixed somne bugs
 - 1.0.4: added a new command to build a react typescript project
